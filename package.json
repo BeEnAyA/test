@@ -7,6 +7,9 @@
   "author": "Balika Thapa",
   "type": "module",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "watch": "tsup --watch",
