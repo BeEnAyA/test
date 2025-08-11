@@ -2,6 +2,7 @@
   "name": "@balika.thapa/semantic-release-test",
   "version": "0.0.0",
   "description": "",
+  "private": false,
   "license": "ISC",
   "author": "Balika Thapa",
   "type": "module",
