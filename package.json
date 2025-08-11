@@ -1,0 +1,21 @@
+{
+  "name": "semantic-release-test",
+  "version": "0.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "semantic-release": "^24.2.7",
+    "tsup": "^8.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
