@@ -1,9 +1,9 @@
 {
-  "name": "semantic-release-test",
+  "name": "@balika.thapa/semantic-release-test",
   "version": "0.0.0",
   "description": "",
   "license": "ISC",
-  "author": "",
+  "author": "Balika Thapa",
   "type": "module",
   "main": "index.js",
   "scripts": {
