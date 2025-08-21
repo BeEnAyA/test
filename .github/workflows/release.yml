@@ -14,12 +14,16 @@ jobs:
     name: Release CLI
     runs-on: ubuntu-latest
     permissions:
+      pull-requests: write
+      issues: write
       contents: write
       packages: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # to ensure we can get all tags
 
       - name: Setup Node
         uses: actions/setup-node@v4
