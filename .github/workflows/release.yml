@@ -76,5 +76,5 @@ jobs:
           title: "Release: Version Packages"
           commit: "Release: Version Packages"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
