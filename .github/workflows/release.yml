@@ -12,6 +12,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -63,6 +64,9 @@ jobs:
 
       - name: Version packages
         run: npx changeset version
+
+      - name: Exit prerelease mode
+        run: npx changeset pre exit
 
       - name: Publish prerelease
         run: npx changeset publish --tag alpha
