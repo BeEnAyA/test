@@ -43,7 +43,7 @@ jobs:
   prerelease:
     name: Prerelease
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/alpha'
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -67,7 +67,7 @@ jobs:
         run: npx changeset version
 
       - name: Publish prerelease
-        run: npx changeset publish --tag dev
+        run: npx changeset publish --tag alpha
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
