@@ -43,5 +43,6 @@ jobs:
           title: "Release: Version Packages"
           commit: "Release: Version Packages"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Prefer a PAT to allow creating PRs when repo settings block the default token
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
