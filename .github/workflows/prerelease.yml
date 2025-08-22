@@ -1,9 +1,9 @@
-name: Release
+name: Prerelease
 
 on:
   push:
     branches:
-      - main
+      - alpha
   workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
@@ -13,8 +13,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  release:
-    name: Release
+  prerelease:
+    name: Prerelease
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -35,13 +35,22 @@ jobs:
       - name: Build packages
         run: npm run build --if-present
 
-      - name: Create Release PR or Publish to npm
+      - name: Enter prerelease mode
+        run: npx changeset pre enter dev
+
+      - name: Version packages
+        run: npx changeset version
+
+      - name: Exit prerelease mode
+        run: npx changeset pre exit
+
+      - name: Create Prerelease PR or Publish with tag
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: npm run release
-          title: "Release: Version Packages"
-          commit: "Release: Version Packages"
+          publish: npm run release --tag alpha
+          title: "Prerelease: Version Packages (alpha)"
+          commit: "Prerelease: Version Packages (alpha)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
