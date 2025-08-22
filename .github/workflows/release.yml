@@ -68,15 +68,13 @@ jobs:
       - name: Exit prerelease mode
         run: npx changeset pre exit
 
-      - name: Publish prerelease
-        run: npx changeset publish --tag alpha
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release --tag alpha
+          title: "Release: Version Packages"
+          commit: "Release: Version Packages"
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Commit changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Version packages for prerelease" || exit 0
-          git push
